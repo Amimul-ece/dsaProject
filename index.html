@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shortest Path Finder – Dijkstra's Algorithm</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Shortest Path Finder</h1>
+    <p>Dijkstra's Algorithm Visualizer &middot; DSA Project</p>
+  </header>
+
+  <main>
+    <!-- LEFT: graph canvas + controls -->
+    <section class="left">
+      <div class="toolbar">
+        <div class="group">
+          <span class="label">Tool</span>
+          <button class="tool active" data-tool="node">Add Node</button>
+          <button class="tool" data-tool="edge">Add Edge</button>
+          <button class="tool" data-tool="move">Move</button>
+          <button class="tool" data-tool="delete">Delete</button>
+        </div>
+        <div class="group">
+          <label class="label" for="weight">Edge weight</label>
+          <input type="number" id="weight" value="5" min="1" step="1">
+        </div>
+        <div class="group">
+          <button id="btnSample">Load Sample</button>
+          <button id="btnClear" class="danger">Clear</button>
+        </div>
+      </div>
+
+      <p id="hint" class="hint"></p>
+      <canvas id="canvas" width="800" height="520"></canvas>
+
+      <div class="toolbar">
+        <div class="group">
+          <label class="label" for="src">Source</label>
+          <select id="src"></select>
+          <label class="label" for="dst">Destination</label>
+          <select id="dst"></select>
+        </div>
+        <div class="group">
+          <button id="btnStep" class="primary">Step</button>
+          <button id="btnPlay" class="primary">Play</button>
+          <button id="btnFinish">Show Result</button>
+          <button id="btnReset">Reset</button>
+        </div>
+        <div class="group">
+          <label class="label" for="speed">Speed</label>
+          <input type="range" id="speed" min="1" max="10" value="5">
+        </div>
+      </div>
+
+      <div class="legend">
+        <span><i style="background:#fbbf24"></i>Current</span>
+        <span><i style="background:#bbf7d0"></i>Visited</span>
+        <span><i style="background:#93c5fd"></i>On shortest path</span>
+        <span><i class="ring g"></i>Source</span>
+        <span><i class="ring r"></i>Destination</span>
+      </div>
+    </section>
+
+    <!-- RIGHT: results -->
+    <aside class="right">
+      <div class="card">
+        <h2>Result</h2>
+        <p id="result" class="result">Build a graph, choose source &amp; destination, then press Step or Play.</p>
+      </div>
+      <div class="card">
+        <h2>Distance Table</h2>
+        <table id="table">
+          <thead><tr><th>Node</th><th>Distance</th><th>Previous</th><th>Status</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Step Log</h2>
+        <ol id="log" class="log"></ol>
+      </div>
+    </aside>
+  </main>
+
+  <footer>Weights must be positive numbers (Dijkstra's algorithm does not work with negative weights).</footer>
+  <script src="script.js"></script>
+</body>
+</html>
